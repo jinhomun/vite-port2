@@ -4,20 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GSAP</title>
+    <title>Gyobok</title>
 
     <link rel="stylesheet" href="../assets/style.css">
+
+    <script src="../script/script.js"></script>
+    <script src="../script/jquery.min.js"></script>
 </head>
+
+<style>
+    body {
+        overflow: hidden;
+    }
+
+    .item__slider .sliderWrap {
+        display: flex;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .item__slider .slider {
+        flex: 0 0 100%;
+        display: none;
+    }
+
+    .item__slider .slider:first-child {
+        display: block;
+    }
+
+    .item__slider .slider img {
+        width: 100%;
+        height: 50vh;
+    }
+
+    @media (max-width:600px) {
+        .item__slider .slider img {
+            width: 100vw;
+            height: 100%;
+        }
+
+    }
+</style>
 
 <body>
     <div id="item__wrap2" class="fixed">
         <div class="item title">
             <ul>
-                <li class="active"><a href="../section/gsap.html">1</a></li>
-                <li><a href="../section/quiz.html">2</a></li>
-                <li><a href="../section/search.html">3</a></li>
+                <li class="active"><a href="gyobok.html">1</a></li>
+                <li><a href="youtube.html">2</a></li>
+                <li><a href="movie.html">3</a></li>
             </ul>
-            <h2 class="long">gsap parallax</h2>
+            <h2 class="long">gyobok site</h2>
         </div>
         <div class="item"></div>
         <div class="item home">
@@ -27,21 +64,38 @@
             </a>
         </div>
         <div class="item noR home">
-            <a href="quiz.html">
-                <p>QUIZ</p>
+            <a href="youtube.html">
+                <p>YOUTUBE.S</p>
                 <img src="../assets/img/Frame 11.svg" alt="화살표"></img>
             </a>
         </div>
         <div class="item skill">
             <h3>skill</h3>
-            <p class="desc">
+            <p class="desc1">
                 VSC | JavaScript<br>
-                HTML | CSS<br>
-                gsap | Git</p>
+                HTML| CSS<br>
+                PHP | PHPMyAdmin<br>
+                jQuery | Git</p>
         </div>
         <div class="item"></div>
-        <div class="item noR img">
-            <img src="../assets/img/gsap01.png" alt="gsap01">
+        <div class="item__slider">
+            <div class="sliderWrap">
+                <div class="slider">
+                    <a href="#">
+                        <img src="../assets/img/gyobok01.png" alt="gyobok01">
+                    </a>
+                </div>
+                <div class="slider">
+                    <a href="#">
+                        <img src="../assets/img/TP-Community.png" alt="gyobok02">
+                    </a>
+                </div>
+                <div class="slider">
+                    <a href="#">
+                        <img src="../assets/img/TP-Introduceinner.png" alt="gyobok01">
+                    </a>
+                </div>
+            </div>
         </div>
         <div class="item"></div>
         <div class="item black">
@@ -76,6 +130,31 @@
                 </p>
         </div>
     </div>
+    <script>
+        // 이미지 슬라이드를 위한 변수 설정
+        var slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            var i;
+            var slides = document.getElementsByClassName("slider");
+
+            // 모든 이미지를 숨김
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+
+            // 다음 이미지를 보여줌
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+            slides[slideIndex - 1].style.display = "block";
+
+            // 2초마다 슬라이드 변경
+            setTimeout(showSlides, 3000);
+        }
+    </script>
 </body>
 
 </html>

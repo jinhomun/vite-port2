@@ -130,6 +130,32 @@ body {
 }
 
 #item__wrap>div.title {
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+#item__wrap>div.title:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 100%;
+    background-color: black;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+#item__wrap>div.title:hover:before {
+    opacity: 1;
+}
+
+#item__wrap>div.title:hover {
+    transform: translateX(10px);
+}
+
+#item__wrap>div.title {
     position: relative;
 }
 
@@ -288,6 +314,14 @@ body {
 }
 
 @media (max-width: 600px) {
+    #item__wrap>div.noR {
+        border-right: 1px solid #d6d6d6;
+    }
+
+    #item__wrap>div.noB {
+        border-bottom: 1px solid #d6d6d6
+    }
+
     #item__wrap {
         display: grid;
         grid-template-columns: repeat(2, 50%);
@@ -306,12 +340,23 @@ body {
         font-family: 'ChosunNm';
     }
 
+    #item__wrap>div {
+        border-bottom: 1px solid #d6d6d6;
+        border-right: 1px solid #d6d6d6;
+        padding: 4px 14px 0px 14px;
+    }
+
+    #item__wrap>div.title ul {
+        padding-top: 0.5vw;
+    }
+
     #item__wrap>div.black .desc {
         font-size: 2vw;
+        padding: 0vw;
     }
 
     #item__wrap>div.title p {
-        font-size: 2.5vw;
+        font-size: 2.2vw;
     }
 
     #item__wrap>div.noB p {
