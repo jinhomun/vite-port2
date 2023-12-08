@@ -13,7 +13,7 @@ body {
         "box1 box1 box1 box4"
         "box5 box5 box7 box7"
         "box5 box5 box15 box15"
-        "box13 box13 box15 box15"
+        "box5 box5 box15 box15"
     ;
     grid-template-columns: repeat(4, 25%);
     grid-template-rows: repeat(4, 25vh);
@@ -236,6 +236,7 @@ body {
         margin-right: 3vh;
     }
 }
+
 @media (max-width: 768px) {
     #item__wrap4>div.home p {
         font-family: var(--main-gmark);
@@ -246,6 +247,7 @@ body {
         margin-right: 3vh;
     }
 }
+
 @media (max-width: 670px) {
     #item__wrap4>div.commentinfo h3 {
         font-weight: bold;
@@ -300,14 +302,17 @@ body {
 
         font-family: 'ChosunNm';
     }
-    #item__wrap4>div.contact{
+
+    #item__wrap4>div.contact {
         padding-top: 45px;
     }
+
     .item.contact h3 {
         font-weight: bold;
         font-size: 5vw;
         margin-bottom: 5px;
     }
+
     #item__wrap4>div.commentinfo h3 {
         font-weight: bold;
         font-size: 3vw;
