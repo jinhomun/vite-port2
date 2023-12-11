@@ -167,6 +167,10 @@
     color: #fff;
 } */
 
+#item__wrap3>div.home:hover {
+    background-color: #a4a4a4;
+}
+
 #item__wrap3>div.home p {
     font-family: var(--main-gmark);
     font-weight: 100;
