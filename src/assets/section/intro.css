@@ -13,7 +13,7 @@ svg text {
     text-transform: uppercase;
     font-size: 100px;
     font-weight: bold;
-    animation: stroke 5s infinite alternate;
+    animation: stroke 5s forwards;
 }
 
 @keyframes stroke {
