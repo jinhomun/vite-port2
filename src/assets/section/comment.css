@@ -289,6 +289,7 @@ body {
         grid-template-columns: repeat(2, 50%);
         grid-template-rows: repeat(8, 12.5vh);
         grid-template-areas:
+<<<<<<< HEAD
             "box1 box4"
             "box5 box5"
             "box5 box5"
@@ -297,12 +298,23 @@ body {
             "box15 box15"
             "box15 box15"
             "box15 box15"
+=======
+            "box1 box1"
+            "box5 box7"
+            "box5 box7"
+            "box15 box15"
+            "box15 box15"
+            "box15 box15"
+            "box15 box15"
+            "box4 box16"
+>>>>>>> 0a6c50b1321637591e1c7e71ba2f2f8568a0aaf0
 
         ;
 
         font-family: 'ChosunNm';
     }
 
+<<<<<<< HEAD
     #item__wrap4>div.title h2 {
         font-family: var(--main-gmark);
         font-size: 5vw;
@@ -320,6 +332,15 @@ body {
     .item.contact h3 {
         font-weight: bold;
         font-size: 3vw;
+=======
+    #item__wrap4>div.contact {
+        padding-top: 45px;
+    }
+
+    .item.contact h3 {
+        font-weight: bold;
+        font-size: 5vw;
+>>>>>>> 0a6c50b1321637591e1c7e71ba2f2f8568a0aaf0
         margin-bottom: 5px;
     }
 
@@ -333,6 +354,7 @@ body {
         padding-bottom: 10px;
         font-size: 3vw;
     }
+<<<<<<< HEAD
 
     .item.contact .message {
         height: 130px;
@@ -340,4 +362,6 @@ body {
 
     .contact button {}
 
+=======
+>>>>>>> 0a6c50b1321637591e1c7e71ba2f2f8568a0aaf0
 }
