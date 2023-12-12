@@ -11,6 +11,40 @@
     <script src="../script/script.js"></script>
 </head>
 
+<style>
+    body {
+        overflow: hidden;
+    }
+
+    .item__slider .sliderWrap {
+        display: flex;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .item__slider .slider {
+        flex: 0 0 100%;
+        display: none;
+    }
+
+    .item__slider .slider:first-child {
+        display: block;
+    }
+
+    .item__slider .slider img {
+        width: 100%;
+        height: 50vh;
+    }
+
+    @media (max-width:600px) {
+        .item__slider .slider img {
+            width: 100vw;
+            height: 100%;
+        }
+
+    }
+</style>
+
 <body>
     <div id="item__wrap2" class="fixed">
         <div class="item title display">
@@ -44,8 +78,24 @@
                 Git</p>
         </div>
         <div class="item display"></div>
-        <div class="item noR img display">
-            <img src="../assets/img/movie01.png" alt="movie01">
+        <div class="item__slider display">
+            <div class="sliderWrap">
+                <div class="slider">
+                    <a href="#">
+                        <img src="../assets/img/movie01.png" alt="movie01">
+                    </a>
+                </div>
+                <div class="slider">
+                    <a href="#">
+                        <img src="../assets/img/movie02.png" alt="movie02">
+                    </a>
+                </div>
+                <div class="slider">
+                    <a href="#">
+                        <img src="../assets/img/movie03.png" alt="movie03">
+                    </a>
+                </div>
+            </div>
         </div>
         <div class="item display"></div>
         <div class="item black display">
@@ -74,6 +124,31 @@
                 netrify에 올린 파일을 직접 볼 수 있습니다.</p>
         </div>
     </div>
+    <script>
+        // 이미지 슬라이드를 위한 변수 설정
+        var slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            var i;
+            var slides = document.getElementsByClassName("slider");
+
+            // 모든 이미지를 숨김
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+
+            // 다음 이미지를 보여줌
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+            slides[slideIndex - 1].style.display = "block";
+
+            // 2초마다 슬라이드 변경
+            setTimeout(showSlides, 3000);
+        }
+    </script>
 </body>
 
 </html>
