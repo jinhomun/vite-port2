@@ -84,6 +84,22 @@ body {
     grid-area: box16;
 }
 
+.display {
+    transform: scale(1);
+    /* 초기 크기를 1로 설정 */
+    animation: scaleUp 1s ease-in-out forwards;
+}
+
+@keyframes scaleUp {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
 #item__wrap>div {
     border-bottom: 1px solid #d6d6d6;
     border-right: 1px solid #d6d6d6;

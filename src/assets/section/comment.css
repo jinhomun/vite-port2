@@ -13,7 +13,7 @@ body {
         "box1 box1 box1 box4"
         "box5 box5 box7 box7"
         "box5 box5 box15 box15"
-        "box5 box5 box15 box15"
+        "box13 box14 box15 box15"
     ;
     grid-template-columns: repeat(4, 25%);
     grid-template-rows: repeat(4, 25vh);
@@ -105,6 +105,20 @@ body {
 
 #item__wrap4>div.home:hover {
     background-color: #a4a4a4;
+}
+
+#item__wrap4>div.icon {
+    display: flex;
+    /* justify-content: flex-end; */
+    align-items: flex-end;
+    margin-left: 1vw;
+}
+
+#item__wrap4>div.icon img {
+    width: 1.8vw;
+    height: 1.8vw;
+    margin-right: 1vw;
+    margin-bottom: 1vw;
 }
 
 #item__wrap4>div.home p {
@@ -233,6 +247,14 @@ body {
         margin-top: 3vh;
         margin-right: 3vh;
     }
+
+    #item__wrap4>div.icon img {
+        width: 4vw;
+        height: 4vw;
+        margin-right: 1vw;
+        margin-bottom: 1vw;
+    }
+
 }
 
 @media (max-width: 768px) {
@@ -277,7 +299,7 @@ body {
         color: white;
         border: none;
         cursor: pointer;
-        height: 50%;
+        height: 20%;
     }
 }
 
@@ -294,7 +316,7 @@ body {
             "box15 box15"
             "box15 box15"
             "box15 box15"
-            "box4 box16"
+            "box4 box13"
         ;
 
         font-family: 'ChosunNm';
@@ -302,7 +324,7 @@ body {
 
     #item__wrap4>div.title h2 {
         font-family: var(--main-gmark);
-        font-size: 5vw;
+        font-size: 10vw;
         font-weight: bold;
         position: absolute;
         text-transform: uppercase;
