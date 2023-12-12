@@ -13,28 +13,30 @@
 
 <body>
     <div id="item__wrap2" class="fixed">
-        <div class="item title display">
-            <ul>
-                <li class="active"><a href="../section/gsap.html">1</a></li>
-                <li><a href="../section/quiz.html">2</a></li>
-                <li><a href="../section/search.html">3</a></li>
-            </ul>
+        <div class="item title">
+            <div class="list">
+                <ul>
+                    <li class="active"><a class="pageLink" href="gsap.html">1</a></li>
+                    <li><a class="pageLink" href="quiz.html">2</a></li>
+                    <li><a class="pageLink" href="search.html">3</a></li>
+                </ul>
+            </div>
             <h2 class="long">gsap parallax</h2>
         </div>
         <div class="item display"></div>
-        <div class="item home display">
-            <a href="main.html">
+        <div class="item home ">
+            <a class="pageLink" href="../index.html">
                 <p>HOME</p>
                 <img src="../assets/img/Arrow 12.svg" alt="화살표"></img>
             </a>
         </div>
-        <div class="item noR home display">
-            <a href="quiz.html">
+        <div class="item noR home">
+            <a class="pageLink" href="quiz.html">
                 <p>QUIZ</p>
                 <img src="../assets/img/Arrow 12.svg" alt="화살표"></img>
             </a>
         </div>
-        <div class="item skill display">
+        <div class="item skill">
             <h3>skill</h3>
             <p class="desc">
                 VSC | JavaScript<br>
@@ -42,11 +44,11 @@
                 gsap | Git</p>
         </div>
         <div class="item display"></div>
-        <div class="item noR img display">
+        <div class="item noR img">
             <img src="../assets/img/gsap01.png" alt="gsap01">
         </div>
-        <div class="item display"></div>
-        <div class="item black display">
+        <div class="item"></div>
+        <div class="item black">
             <p class="desc">
                 GSAP(또는 GreenSock Animation Platform)은 웹 애니메이션을 구축하는 데 사용되는 강력한 JavaScript 라이브러리 중 하나입니다. GSAP은 다양한
                 애니메이션 효과를 구현하는 데 도움이 되며,
@@ -59,25 +61,68 @@
                 메뉴 숨기기 효과,가로 효과,가로 세로 효과,나타나기 효과 ,스무스 효과<br>
             </p>
         </div>
-        <div class="item noB display"></div>
-        <div class="item display"></div>
-        <div class="item noR display"></div>
-        <div class="item noB display"></div>
-        <div class="item noB display"></div>
-        <div class="item noB title display">
+        <div class="item noB"></div>
+        <div class="item"></div>
+        <div class="item noR"></div>
+        <div class="item noB"></div>
+        <div class="item noB"></div>
+        <div class="item noB title">
             <h3>code view</h3>
             <p class="desc">
                 skill를 이용하여 만든 소스를
                 깃을 통해 볼 수 있습니다.
             </p>
         </div>
-        <div class="item noR noB title display">
+        <div class="item noR noB title">
             <h3>site view</h3>
             <p class="desc">
                 깃에 올린 파일을 직접 볼 수 있습니다.
             </p>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.pageLink').forEach(function (link) {
+                link.addEventListener('click', function (event) {
+                    event.preventDefault(); // 기본 동작 방지
+                    let url = this.href; // 이동할 URL 저장
+
+                    var items = Array.from(document.querySelectorAll('.item'));
+
+                    for (let i = items.length - 1; i > 0; i--) {
+                        const j = Math.floor(Math.random() * (i + 1));
+                        [items[i], items[j]] = [items[j], items[i]];
+                    }
+
+                    items.forEach(function (item) {
+                        item.classList.remove('active');
+                    });
+
+                    items.forEach(function (item, index) {
+                        setTimeout(function () {
+                            item.classList.add('active');
+
+                            if (index === items.length - 1) {
+                                setTimeout(function () {
+                                    items.forEach(function (item) {
+                                        item.style.borderColor = 'black'; // 선 색상을 검은색으로 변경
+                                        item.style.transition = "all 1s";
+                                    });
+                                }, 1000); // 'active' 클래스 추가 후 추가적인 지연
+                            }
+
+                        }, 200 * index); // 0.2초 간격
+                    });
+
+                    // 2초 후에 페이지 이동
+                    setTimeout(function () {
+                        window.location.href = url;
+                    }, 12000);
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
