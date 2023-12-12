@@ -6,6 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Intro</title>
     <link rel="stylesheet" href="assets/style.css">
+
+    <script>
+        function redirectToNextPage() {
+            window.location.href = "section/main.html"; // 다음 페이지 URL로 변경
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            var textElement = document.querySelector("svg text");
+
+            textElement.addEventListener("animationend", function () {
+                redirectToNextPage();
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -16,7 +30,6 @@
             <text x="50%" y="60%" text-anchor="middle" dy="100px">developer</text>
         </a>
     </svg>
-
 </body>
 
 </html>

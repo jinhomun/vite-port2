@@ -5,7 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Intro</title>
-  <link rel="stylesheet" crossorigin href="/assets/index-0SgXNo3D.css">
+    <link rel="stylesheet" crossorigin href="/assets/index-0SgXNo3D.css">
+
+    <script>
+        function redirectToNextPage() {
+            window.location.href = "section/main.html"; // 다음 페이지 URL로 변경
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            var textElement = document.querySelector("svg text");
+
+            textElement.addEventListener("animationend", function () {
+                redirectToNextPage();
+            });
+        });
+    </script>
 </head>
 
 <body>
