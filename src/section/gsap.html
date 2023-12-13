@@ -90,35 +90,54 @@
 
                     var items = Array.from(document.querySelectorAll('.item'));
 
+                    // Fisher-Yates 알고리즘으로 배열 랜덤 섞기
                     for (let i = items.length - 1; i > 0; i--) {
                         const j = Math.floor(Math.random() * (i + 1));
                         [items[i], items[j]] = [items[j], items[i]];
                     }
 
-                    items.forEach(function (item) {
-                        item.classList.remove('active');
-                    });
-
+                    // .active 클래스 추가
                     items.forEach(function (item, index) {
                         setTimeout(function () {
                             item.classList.add('active');
+                            // border 색상 변경 (검은색으로)
+                            item.style.borderColor = 'black';
+                            item.style.transition = "all 1s";
 
                             if (index === items.length - 1) {
                                 setTimeout(function () {
                                     items.forEach(function (item) {
                                         item.style.borderColor = 'black'; // 선 색상을 검은색으로 변경
-                                        item.style.transition = "all 1s";
                                     });
-                                }, 1000); // 'active' 클래스 추가 후 추가적인 지연
+                                }, 1000);
                             }
-
                         }, 200 * index); // 0.2초 간격
                     });
 
-                    // 2초 후에 페이지 이동
+                    // 페이지 이동
                     setTimeout(function () {
                         window.location.href = url;
-                    }, 12000);
+                    }, 8000); // 8초 후에 페이지 이동
+
+                    // .active 클래스 제거
+                    setTimeout(function () {
+                        items.forEach(function (item, index) {
+                            setTimeout(function () {
+                                item.classList.remove('active');
+                                // border 색상 변경 (흰색으로)
+                                item.style.borderColor = 'white';
+                                item.style.transition = "all 1s";
+
+                                if (index === items.length - 1) {
+                                    setTimeout(function () {
+                                        items.forEach(function (item) {
+                                            item.style.borderColor = 'black'; // 선 색상을 검은색으로 변경
+                                        });
+                                    }, 1000);
+                                }
+                            }, 200 * index); // 0.2초 간격
+                        });
+                    }, 12000); // 12초 후에 .active 클래스 제거
                 });
             });
         });
