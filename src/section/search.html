@@ -79,23 +79,36 @@
             document.addEventListener('DOMContentLoaded', function () {
                 // 현재 페이지의 URL을 가져옵니다.
                 var currentPage = window.location.href;
+<<<<<<< HEAD
 
+=======
+                
+>>>>>>> 5080c5353cabdbfb9364204f42ae4414c92e01fc
                 // 모든 항목에 대해 "active" 클래스를 추가합니다.
                 var items = Array.from(document.querySelectorAll('.item'));
                 items.forEach(function (item) {
                     item.classList.add('active');
                 });
+<<<<<<< HEAD
 
+=======
+                
+>>>>>>> 5080c5353cabdbfb9364204f42ae4414c92e01fc
                 // Fisher-Yates 알고리즘을 사용하여 배열을 섞습니다.
                 for (let i = items.length - 1; i > 0; i--) {
                     const j = Math.floor(Math.random() * (i + 1));
                     [items[i], items[j]] = [items[j], items[i]];
                 }
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 5080c5353cabdbfb9364204f42ae4414c92e01fc
                 // 각 항목에 대해 5초 간격으로 "active" 클래스를 제거합니다.
                 items.forEach(function (item, index) {
                     setTimeout(function () {
                         item.classList.remove('active');
+<<<<<<< HEAD
                     }, index * 200); // 각 항목은 5초 간격으로 제거됩니다.
                 });
             });
@@ -150,6 +163,62 @@
                 });
             });
         </script>
+=======
+                    }, index * 500); // 각 항목은 5초 간격으로 제거됩니다.
+                });
+            });
+        </script>
+     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.pageLink').forEach(function (link) {
+                link.addEventListener('click', function (event) {
+                    event.preventDefault(); // 기본 동작 방지
+                    let url = this.href; // 이동할 URL 저장
+    
+                    var items = Array.from(document.querySelectorAll('.item'));
+    
+                    for (let i = items.length - 1; i > 0; i--) {
+                        const j = Math.floor(Math.random() * (i + 1));
+                        [items[i], items[j]] = [items[j], items[i]];
+                    }
+    
+                    items.forEach(function (item) {
+                        item.classList.remove('active');
+                    });
+    
+                    items.forEach(function (item, index) {
+                        setTimeout(function () {
+                            item.classList.add('active');
+    
+                            if (index === items.length - 1) {
+                                setTimeout(function () {
+                                    items.forEach(function (item) {
+                                        item.style.borderColor = 'black'; // 선 색상을 검은색으로 변경
+                                        item.style.transition = "all 1s";
+                                    });
+                                }, 1000); // 'active' 클래스 추가 후 추가적인 지연
+                            }
+    
+                        }, 200 * index); // 0.2초 간격
+                    });
+    
+                    // 페이지 이동 전에 12초 후에도 'active' 클래스를 유지하기 위한 코드
+                    setTimeout(function () {
+                        items.forEach(function (item) {
+                            item.classList.add('active');
+                            item.style.borderColor = 'black'; // 선 색상을 검은색으로 변경
+                            item.style.transition = "all 1s";
+                        });
+                        // 2초 후에 페이지 이동
+                        setTimeout(function () {
+                            window.location.href = url;
+                        }, 2000);
+                    }, 10000);
+                });
+            });
+        });
+    </script>
+>>>>>>> 5080c5353cabdbfb9364204f42ae4414c92e01fc
 </body>
 
 </html>
