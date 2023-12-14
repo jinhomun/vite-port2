@@ -26,9 +26,9 @@
             </p>
             <div class="list">
                 <ul>
-                    <li><a class="pageLink" href="/src/section/gsap.html">1</a></li>
-                    <li><a class="pageLink" href="/src/section/quiz.html">2</a></li>
-                    <li><a class="pageLink" href="/src/section/search.html">3</a></li>
+                    <li><a class="pageLink" href="../section/gsap.html">1</a></li>
+                    <li><a class="pageLink" href="../section/quiz.html">2</a></li>
+                    <li><a class="pageLink" href="../section/search.html">3</a></li>
                 </ul>
             </div>
         </div>
@@ -107,24 +107,20 @@
         </div>
     </div>
 
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             document.querySelectorAll('.pageLink').forEach(function (link) {
                 link.addEventListener('click', function (event) {
                     event.preventDefault(); // 기본 동작 방지
                     let url = this.href; // 이동할 URL 저장
-    
-                    var items = Array.from(document.querySelectorAll('.item'));
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> 5080c5353cabdbfb9364204f42ae4414c92e01fc
+                    var items = Array.from(document.querySelectorAll('.item'));
+
                     for (let i = items.length - 1; i > 0; i--) {
                         const j = Math.floor(Math.random() * (i + 1));
                         [items[i], items[j]] = [items[j], items[i]];
                     }
-<<<<<<< HEAD
 
                     items.forEach(function (item) {
                         item.classList.remove('active');
@@ -134,17 +130,6 @@
                         setTimeout(function () {
                             item.classList.add('active');
 
-=======
-    
-                    items.forEach(function (item) {
-                        item.classList.remove('active');
-                    });
-    
-                    items.forEach(function (item, index) {
-                        setTimeout(function () {
-                            item.classList.add('active');
-    
->>>>>>> 5080c5353cabdbfb9364204f42ae4414c92e01fc
                             if (index === items.length - 1) {
                                 setTimeout(function () {
                                     items.forEach(function (item) {
@@ -153,17 +138,10 @@
                                     });
                                 }, 1000); // 'active' 클래스 추가 후 추가적인 지연
                             }
-<<<<<<< HEAD
 
-                        }, 100 * index); // 0.2초 간격
-                    });
-
-=======
-    
                         }, 200 * index); // 0.2초 간격
                     });
-    
->>>>>>> 5080c5353cabdbfb9364204f42ae4414c92e01fc
+
                     // 페이지 이동 전에 12초 후에도 'active' 클래스를 유지하기 위한 코드
                     setTimeout(function () {
                         items.forEach(function (item) {
@@ -175,11 +153,7 @@
                         setTimeout(function () {
                             window.location.href = url;
                         }, 2000);
-<<<<<<< HEAD
                     }, 2000);
-=======
-                    }, 10000);
->>>>>>> 5080c5353cabdbfb9364204f42ae4414c92e01fc
                 });
             });
         });
