@@ -17,28 +17,28 @@
         overflow: hidden;
     }
 
-    .item__slider .sliderWrap {
+    .item.sliderWrap {
         display: flex;
         height: 100%;
         overflow: hidden;
     }
 
-    .item__slider .slider {
+    .item .slider {
         flex: 0 0 100%;
         display: none;
     }
 
-    .item__slider .slider:first-child {
+    .item.slider:first-child {
         display: block;
     }
 
-    .item__slider .slider img {
+    .item .slider img {
         width: 100%;
         height: 50vh;
     }
 
     @media (max-width:600px) {
-        .item__slider .slider img {
+        .item .slider img {
             width: 100vw;
             height: 100%;
         }
@@ -48,28 +48,28 @@
 
 <body>
     <div id="item__wrap2" class="fixed">
-        <div class="item title display">
+        <div class="item title">
             <ul>
-                <li class="active"><a href="gyobok.html">1</a></li>
-                <li><a href="youtube.html">2</a></li>
-                <li><a href="movie.html">3</a></li>
+                <li class="active"><a class="pageLink" href="gyobok.html">1</a></li>
+                <li><a class="pageLink" href="youtube.html">2</a></li>
+                <li><a class="pageLink" href="movie.html">3</a></li>
             </ul>
             <h2 class="long">gyobok site</h2>
         </div>
-        <div class="item display"></div>
-        <div class="item home display">
-            <a href="main.html">
+        <div class="item"></div>
+        <div class="item home">
+            <a class="pageLink" href="main.html">
                 <p>HOME</p>
                 <img src="../assets/img/Arrow 12.svg" alt="화살표"></img>
             </a>
         </div>
-        <div class="item noR home display">
-            <a href="youtube.html">
+        <div class="item noR home">
+            <a class="pageLink" href="youtube.html">
                 <p>YOUTUBE.S</p>
                 <img src="../assets/img/Arrow 12.svg" alt="화살표"></img>
             </a>
         </div>
-        <div class="item skill display">
+        <div class="item skill">
             <h3>skill</h3>
             <p class="desc1">
                 VSC | JavaScript<br>
@@ -77,8 +77,8 @@
                 PHP | PHPMyAdmin<br>
                 jQuery | Git</p>
         </div>
-        <div class="item display"></div>
-        <div class="item__slider display">
+        <div class="item"></div>
+        <div class="item">
             <div class="sliderWrap">
                 <div class="slider">
                     <a href="#">
@@ -97,8 +97,8 @@
                 </div>
             </div>
         </div>
-        <div class="item display"></div>
-        <div class="item black display">
+        <div class="item"></div>
+        <div class="item black">
             <p class="desc">
                 전국에 있는 고등학교 교복을 모아둔 교복소개 사이트 입니다.
                 직장인 커뮤니티, 대학생 커뮤니티 “왜 청소년을 위한 커뮤니티는 없을까?” 라는 생각에서
@@ -110,19 +110,19 @@
                 각 조회수, 좋아요, 싫어요 순으로 순위를 확인할 수 있습니다.<br>
                 또, “수다방” 커뮤니티에서 학생들만의 이야기로 수다의 꽃을 피울 수 있습니다!
         </div>
-        <div class="item noB display"></div>
-        <div class="item display"></div>
-        <div class="item noR display"></div>
-        <div class="item noB display"></div>
-        <div class="item noB display"></div>
-        <div class="item noB title display">
+        <div class="item noB"></div>
+        <div class="item"></div>
+        <div class="item noR"></div>
+        <div class="item noB"></div>
+        <div class="item noB"></div>
+        <div class="item noB title">
             <h3>code view</h3>
             <p class="desc">
                 skill를 이용하여 만든 소스를
                 깃을 통해 볼 수 있습니다.
             </p>
         </div>
-        <div class="item noR noB title display">
+        <div class="item noR noB title">
             <h3>site view</h3>
             <p class="desc">
                 깃에 올린 파일을 직접 볼 수 있습니다.
@@ -153,6 +153,88 @@
             // 2초마다 슬라이드 변경
             setTimeout(showSlides, 3000);
         }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 현재 페이지의 URL을 가져옵니다.
+            var currentPage = window.location.href;
+
+            // 모든 항목에 대해 "active" 클래스를 추가합니다.
+            var items = Array.from(document.querySelectorAll('.item'));
+            items.forEach(function (item) {
+                item.classList.add('active');
+            });
+
+            // Fisher-Yates 알고리즘을 사용하여 배열을 섞습니다.
+            for (let i = items.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [items[i], items[j]] = [items[j], items[i]];
+            }
+
+            // 각 항목에 대해 5초 간격으로 "active" 클래스를 제거합니다.
+            items.forEach(function (item, index) {
+                setTimeout(function () {
+                    item.classList.remove('active');
+                }, index * 200); // 각 항목은 5초 간격으로 제거됩니다.
+
+                // item__slider일 경우 추가적인 처리를 수행합니다.
+                if (item.classList.contains('item__slider')) {
+                    setTimeout(function () {
+                        item.classList.add('active');
+                    }, index * 200); // 예를 들어, 500ms 후에 "active" 클래스를 추가합니다.
+                }
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.pageLink').forEach(function (link) {
+                link.addEventListener('click', function (event) {
+                    event.preventDefault(); // 기본 동작 방지
+                    let url = this.href; // 이동할 URL 저장
+
+                    var items = Array.from(document.querySelectorAll('.item'));
+
+                    for (let i = items.length - 1; i > 0; i--) {
+                        const j = Math.floor(Math.random() * (i + 1));
+                        [items[i], items[j]] = [items[j], items[i]];
+                    }
+
+                    items.forEach(function (item) {
+                        item.classList.remove('active');
+                    });
+
+                    items.forEach(function (item, index) {
+                        setTimeout(function () {
+                            item.classList.add('active');
+
+                            if (index === items.length - 1) {
+                                setTimeout(function () {
+                                    items.forEach(function (item) {
+                                        item.style.borderColor = 'black'; // 선 색상을 검은색으로 변경
+                                        item.style.transition = "all 1s";
+                                    });
+                                }, 1000); // 'active' 클래스 추가 후 추가적인 지연
+                            }
+
+                        }, 200 * index); // 0.2초 간격
+                    });
+
+                    // 페이지 이동 전에 12초 후에도 'active' 클래스를 유지하기 위한 코드
+                    setTimeout(function () {
+                        items.forEach(function (item) {
+                            item.classList.add('active');
+                            item.style.borderColor = 'black'; // 선 색상을 검은색으로 변경
+                            item.style.transition = "all 1s";
+                        });
+                        // 2초 후에 페이지 이동
+                        setTimeout(function () {
+                            window.location.href = url;
+                        }, 2000);
+                    }, 2000);
+                });
+            });
+        });
     </script>
 </body>
 

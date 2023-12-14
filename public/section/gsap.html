@@ -6,45 +6,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GSAP</title>
 
-    <link rel="stylesheet" crossorigin href="../assets/index-0SgXNo3D.css">
+    <link rel="stylesheet" href="../assets/index-A8amKtA3.css">
+
+    <script src="../script/script.js"></script>
+    <style>
+        .item {
+            position: relative;
+        }
+
+        .item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            z-index: 100;
+            width: 100%;
+            height: 0%;
+            background-color: #000;
+            transition: height 0.3s ease-in;
+        }
+
+        .item.active::before {
+            height: 100%;
+        }
+    </style>
 </head>
 
 <body>
     <div id="item__wrap2" class="fixed">
-        <div class="item title display">
-            <ul>
-                <li class="active"><a href="../section/gsap.html">1</a></li>
-                <li><a href="../section/quiz.html">2</a></li>
-                <li><a href="../section/search.html">3</a></li>
-            </ul>
+        <div class="item title">
+            <div class="list">
+                <ul>
+                    <li class="active"><a class="pageLink" href="gsap.html">1</a></li>
+                    <li><a class="pageLink" href="quiz.html">2</a></li>
+                    <li><a class="pageLink" href="search.html">3</a></li>
+                </ul>
+            </div>
             <h2 class="long">gsap parallax</h2>
         </div>
         <div class="item display"></div>
-        <div class="item home display">
-            <a href="main.html">
+        <div class="item home ">
+            <a class="pageLink" href="../index.html">
                 <p>HOME</p>
                 <img src="../assets/img/Arrow 12.svg" alt="화살표"></img>
             </a>
         </div>
-        <div class="item noR home display">
-            <a href="quiz.html">
+        <div class="item noR home">
+            <a class="pageLink" href="quiz.html">
                 <p>QUIZ</p>
                 <img src="../assets/img/Arrow 12.svg" alt="화살표"></img>
             </a>
         </div>
-        <div class="item skill display">
+        <div class="item skill">
             <h3>skill</h3>
             <p class="desc">
                 VSC | JavaScript<br>
                 HTML | CSS<br>
                 gsap | Git</p>
         </div>
-        <div class="item display"></div>
-        <div class="item noR img display">
+        <div class="item"></div>
+        <div class="item noR img">
             <img src="../assets/img/gsap01.png" alt="gsap01">
         </div>
-        <div class="item display"></div>
-        <div class="item black display">
+        <div class="item"></div>
+        <div class="item black">
             <p class="desc">
                 GSAP(또는 GreenSock Animation Platform)은 웹 애니메이션을 구축하는 데 사용되는 강력한 JavaScript 라이브러리 중 하나입니다. GSAP은 다양한
                 애니메이션 효과를 구현하는 데 도움이 되며,
@@ -57,25 +82,104 @@
                 메뉴 숨기기 효과,가로 효과,가로 세로 효과,나타나기 효과 ,스무스 효과<br>
             </p>
         </div>
-        <div class="item noB display"></div>
-        <div class="item display"></div>
-        <div class="item noR display"></div>
-        <div class="item noB display"></div>
-        <div class="item noB display"></div>
-        <div class="item noB title display">
+        <div class="item noB"></div>
+        <div class="item"></div>
+        <div class="item noR"></div>
+        <div class="item noB"></div>
+        <div class="item noB"></div>
+        <div class="item noB title">
             <h3>code view</h3>
-            <p class="desc">
-                skill를 이용하여 만든 소스를
-                깃을 통해 볼 수 있습니다.
-            </p>
+            <a href="https://github.com/jinhomun/webs2024/tree/main/javascript/gsap">
+                <p class="desc">
+                    skill를 이용하여 만든 소스를
+                    깃을 통해 볼 수 있습니다.
+                </p>
+            </a>
         </div>
-        <div class="item noR noB title display">
+        <div class="item noR noB title">
             <h3>site view</h3>
-            <p class="desc">
-                깃에 올린 파일을 직접 볼 수 있습니다.
-            </p>
+            <a href="https://github.com/jinhomun/webs2024/tree/main/javascript/gsap">
+                <p class="desc">
+                    깃에 올린 파일을 직접 볼 수 있습니다.
+                </p>
+            </a>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 현재 페이지의 URL을 가져옵니다.
+            var currentPage = window.location.href;
+
+            // 모든 항목에 대해 "active" 클래스를 추가합니다.
+            var items = Array.from(document.querySelectorAll('.item'));
+            items.forEach(function (item) {
+                item.classList.add('active');
+            });
+
+            // Fisher-Yates 알고리즘을 사용하여 배열을 섞습니다.
+            for (let i = items.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [items[i], items[j]] = [items[j], items[i]];
+            }
+
+            // 각 항목에 대해 5초 간격으로 "active" 클래스를 제거합니다.
+            items.forEach(function (item, index) {
+                setTimeout(function () {
+                    item.classList.remove('active');
+                }, index * 200); // 각 항목은 5초 간격으로 제거됩니다.
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.pageLink').forEach(function (link) {
+                link.addEventListener('click', function (event) {
+                    event.preventDefault(); // 기본 동작 방지
+                    let url = this.href; // 이동할 URL 저장
+
+                    var items = Array.from(document.querySelectorAll('.item'));
+
+                    for (let i = items.length - 1; i > 0; i--) {
+                        const j = Math.floor(Math.random() * (i + 1));
+                        [items[i], items[j]] = [items[j], items[i]];
+                    }
+
+                    items.forEach(function (item) {
+                        item.classList.remove('active');
+                    });
+
+                    items.forEach(function (item, index) {
+                        setTimeout(function () {
+                            item.classList.add('active');
+
+                            if (index === items.length - 1) {
+                                setTimeout(function () {
+                                    items.forEach(function (item) {
+                                        item.style.borderColor = 'black'; // 선 색상을 검은색으로 변경
+                                        item.style.transition = "all 1s";
+                                    });
+                                }, 1000); // 'active' 클래스 추가 후 추가적인 지연
+                            }
+
+                        }, 200 * index); // 0.2초 간격
+                    });
+
+                    // 페이지 이동 전에 12초 후에도 'active' 클래스를 유지하기 위한 코드
+                    setTimeout(function () {
+                        items.forEach(function (item) {
+                            item.classList.add('active');
+                            item.style.borderColor = 'black'; // 선 색상을 검은색으로 변경
+                            item.style.transition = "all 1s";
+                        });
+                        // 2초 후에 페이지 이동
+                        setTimeout(function () {
+                            window.location.href = url;
+                        }, 2000);
+                    }, 2000);
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
