@@ -16,8 +16,8 @@
         <div class="item title">
             <ul>
                 <li class="active"><a class="pageLink" href="w.point.html">1</a></li>
-                <!-- <li><a href="../section/w.point.html">2</a></li>
-                <li><a href="../section/w.point.html">3</a></li> -->
+                <li><a href="../section/vite.html">2</a></li>
+                <!-- <li><a href="../section/w.point.html">3</a></li> -->
             </ul>
             <h2>w.point</h2>
         </div>
@@ -79,9 +79,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // 현재 페이지의 URL을 가져옵니다.
-            var currentPage = window.location.href;
-
             // 모든 항목에 대해 "active" 클래스를 추가합니다.
             var items = Array.from(document.querySelectorAll('.item'));
             items.forEach(function (item) {
@@ -94,11 +91,20 @@
                 [items[i], items[j]] = [items[j], items[i]];
             }
 
-            // 각 항목에 대해 5초 간격으로 "active" 클래스를 제거합니다.
+            // 각 항목에 대해 "active" 클래스를 제거하고 선 색상을 변경합니다.
             items.forEach(function (item, index) {
                 setTimeout(function () {
                     item.classList.remove('active');
-                }, index * 200); // 각 항목은 5초 간격으로 제거됩니다.
+                    item.style.borderColor = 'black'; // 선 색상을 검은색으로 변경
+                    item.style.transition = "all 1s";
+
+                    // 모든 항목이 "active" 클래스 제거 후에 추가적인 작업 수행
+                    if (index === items.length - 1) {
+                        setTimeout(function () {
+                            // 추가 작업 수행
+                        }, 100);
+                    }
+                }, index * 100); // 각 항목은 5초 간격으로 제거됩니다.
             });
         });
     </script>
@@ -130,13 +136,13 @@
                                         item.style.borderColor = 'black'; // 선 색상을 검은색으로 변경
                                         item.style.transition = "all 1s";
                                     });
-                                }, 1000); // 'active' 클래스 추가 후 추가적인 지연
+                                }); // 'active' 클래스 추가 후 추가적인 지연
                             }
 
                         }, 200 * index); // 0.2초 간격
                     });
 
-                    // 페이지 이동 전에 12초 후에도 'active' 클래스를 유지하기 위한 코드
+
                     setTimeout(function () {
                         items.forEach(function (item) {
                             item.classList.add('active');
@@ -146,8 +152,8 @@
                         // 2초 후에 페이지 이동
                         setTimeout(function () {
                             window.location.href = url;
-                        }, 2000);
-                    }, 2000);
+                        }, 1000);
+                    }, 1000);
                 });
             });
         });

@@ -100,8 +100,8 @@
         <div class="item"></div>
         <div class="item black">
             <p class="desc">
-                vue.js를 이용해서 lIKE MOVIE라는 사이트를 만들었습니다.<br>
-                LIKE movie는 영화 팬들을 위한 완벽한 플랫폼입니다.<br>
+                vue.js를 이용해서 ON MOVIE라는 사이트를 만들었습니다.<br>
+                ON movie는 영화 팬들을 위한 완벽한 플랫폼입니다.<br>
                 우리는 수많은 영화 데이터베이스를 통합하여 여러 소스의 정보를 한 곳에서 손쉽게 찾아볼 수 있게 했습니다.<br>
                 최신 영화 소식, 평점, 리뷰, 예고편, 그리고 더 많은 콘텐츠를 여기서 만나보세요!<br>
             </p>
@@ -152,9 +152,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // 현재 페이지의 URL을 가져옵니다.
-            var currentPage = window.location.href;
-
             // 모든 항목에 대해 "active" 클래스를 추가합니다.
             var items = Array.from(document.querySelectorAll('.item'));
             items.forEach(function (item) {
@@ -167,11 +164,20 @@
                 [items[i], items[j]] = [items[j], items[i]];
             }
 
-            // 각 항목에 대해 5초 간격으로 "active" 클래스를 제거합니다.
+            // 각 항목에 대해 "active" 클래스를 제거하고 선 색상을 변경합니다.
             items.forEach(function (item, index) {
                 setTimeout(function () {
                     item.classList.remove('active');
-                }, index * 200); // 각 항목은 5초 간격으로 제거됩니다.
+                    item.style.borderColor = 'black'; // 선 색상을 검은색으로 변경
+                    item.style.transition = "all 1s";
+
+                    // 모든 항목이 "active" 클래스 제거 후에 추가적인 작업 수행
+                    if (index === items.length - 1) {
+                        setTimeout(function () {
+                            // 추가 작업 수행
+                        }, 100);
+                    }
+                }, index * 100); // 각 항목은 5초 간격으로 제거됩니다.
             });
         });
     </script>
@@ -203,7 +209,7 @@
                                         item.style.borderColor = 'black'; // 선 색상을 검은색으로 변경
                                         item.style.transition = "all 1s";
                                     });
-                                }, 1000); // 'active' 클래스 추가 후 추가적인 지연
+                                }); // 'active' 클래스 추가 후 추가적인 지연
                             }
 
                         }, 200 * index); // 0.2초 간격
@@ -219,7 +225,7 @@
                         // 2초 후에 페이지 이동
                         setTimeout(function () {
                             window.location.href = url;
-                        }, 2000);
+                        }, 1000);
                     }, 1000);
                 });
             });
