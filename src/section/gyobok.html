@@ -82,17 +82,17 @@
             <div class="sliderWrap">
                 <div class="slider">
                     <a href="#">
-                        <img src="../assets/img/739shots_so.png" alt="gyobok01">
+                        <img src="../assets/img/gyobok1.png" alt="gyobok01">
                     </a>
                 </div>
                 <div class="slider">
                     <a href="#">
-                        <img src="../assets/img/220shots_so.png" alt="gyobok02">
+                        <img src="../assets/img/gyobok2.png" alt="gyobok02">
                     </a>
                 </div>
                 <div class="slider">
                     <a href="#">
-                        <img src="../assets/img/79shots_so.png" alt="gyobok01">
+                        <img src="../assets/img/gyobok3.png" alt="gyobok01">
                     </a>
                 </div>
             </div>
@@ -154,7 +154,8 @@
             setTimeout(showSlides, 3000);
         }
     </script>
-    <script>
+
+   <script>
         document.addEventListener('DOMContentLoaded', function () {
             // 모든 항목에 대해 "active" 클래스를 추가합니다.
             var items = Array.from(document.querySelectorAll('.item'));
@@ -173,7 +174,7 @@
                 setTimeout(function () {
                     item.classList.remove('active');
                     item.style.borderColor = 'black'; // 선 색상을 검은색으로 변경
-                    item.style.transition = "all 1s";
+                    item.style.transition = "all 0.5s";
 
                     // 모든 항목이 "active" 클래스 제거 후에 추가적인 작업 수행
                     if (index === items.length - 1) {
@@ -211,12 +212,12 @@
                                 setTimeout(function () {
                                     items.forEach(function (item) {
                                         item.style.borderColor = 'black'; // 선 색상을 검은색으로 변경
-                                        item.style.transition = "all 1s";
+                                        item.style.transition = "all 0.5s";
                                     });
                                 }); // 'active' 클래스 추가 후 추가적인 지연
                             }
 
-                        }, 200 * index); // 0.2초 간격
+                        }, 100 * index); // 0.2초 간격
                     });
 
 
@@ -224,13 +225,13 @@
                         items.forEach(function (item) {
                             item.classList.add('active');
                             item.style.borderColor = 'black'; // 선 색상을 검은색으로 변경
-                            item.style.transition = "all 1s";
+                            item.style.transition = "all 0.5s";
                         });
                         // 2초 후에 페이지 이동
                         setTimeout(function () {
                             window.location.href = url;
                         }, 1000);
-                    }, 1000);
+                    }, 100);
                 });
             });
         });

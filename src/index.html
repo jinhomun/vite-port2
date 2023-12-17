@@ -134,26 +134,26 @@
                                 setTimeout(function () {
                                     items.forEach(function (item) {
                                         item.style.borderColor = 'black'; // 선 색상을 검은색으로 변경
-                                        item.style.transition = "all 1s";
+                                        item.style.transition = "all 0.5s";
                                     });
-                                }, 500); // 'active' 클래스 추가 후 추가적인 지연
+                                }); // 'active' 클래스 추가 후 추가적인 지연
                             }
 
-                        }, 200 * index); // 0.2초 간격
+                        }, 100 * index); // 0.2초 간격
                     });
 
-                    // 페이지 이동 전에 12초 후에도 'active' 클래스를 유지하기 위한 코드
+
                     setTimeout(function () {
                         items.forEach(function (item) {
                             item.classList.add('active');
                             item.style.borderColor = 'black'; // 선 색상을 검은색으로 변경
-                            item.style.transition = "all 1s";
+                            item.style.transition = "all 0.5s";
                         });
                         // 2초 후에 페이지 이동
                         setTimeout(function () {
                             window.location.href = url;
-                        }, 2000);
-                    }, 2000);
+                        }, 1000);
+                    }, 100);
                 });
             });
         });

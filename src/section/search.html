@@ -83,20 +83,20 @@
                 items.forEach(function (item) {
                     item.classList.add('active');
                 });
-
+    
                 // Fisher-Yates 알고리즘을 사용하여 배열을 섞습니다.
                 for (let i = items.length - 1; i > 0; i--) {
                     const j = Math.floor(Math.random() * (i + 1));
                     [items[i], items[j]] = [items[j], items[i]];
                 }
-
+    
                 // 각 항목에 대해 "active" 클래스를 제거하고 선 색상을 변경합니다.
                 items.forEach(function (item, index) {
                     setTimeout(function () {
                         item.classList.remove('active');
                         item.style.borderColor = 'black'; // 선 색상을 검은색으로 변경
-                        item.style.transition = "all 1s";
-
+                        item.style.transition = "all 0.5s";
+    
                         // 모든 항목이 "active" 클래스 제거 후에 추가적인 작업 수행
                         if (index === items.length - 1) {
                             setTimeout(function () {
@@ -113,46 +113,46 @@
                     link.addEventListener('click', function (event) {
                         event.preventDefault(); // 기본 동작 방지
                         let url = this.href; // 이동할 URL 저장
-
+    
                         var items = Array.from(document.querySelectorAll('.item'));
-
+    
                         for (let i = items.length - 1; i > 0; i--) {
                             const j = Math.floor(Math.random() * (i + 1));
                             [items[i], items[j]] = [items[j], items[i]];
                         }
-
+    
                         items.forEach(function (item) {
                             item.classList.remove('active');
                         });
-
+    
                         items.forEach(function (item, index) {
                             setTimeout(function () {
                                 item.classList.add('active');
-
+    
                                 if (index === items.length - 1) {
                                     setTimeout(function () {
                                         items.forEach(function (item) {
                                             item.style.borderColor = 'black'; // 선 색상을 검은색으로 변경
-                                            item.style.transition = "all 1s";
+                                            item.style.transition = "all 0.5s";
                                         });
                                     }); // 'active' 클래스 추가 후 추가적인 지연
                                 }
-
-                            }, 200 * index); // 0.2초 간격
+    
+                            }, 100 * index); // 0.2초 간격
                         });
-
-
+    
+    
                         setTimeout(function () {
                             items.forEach(function (item) {
                                 item.classList.add('active');
                                 item.style.borderColor = 'black'; // 선 색상을 검은색으로 변경
-                                item.style.transition = "all 1s";
+                                item.style.transition = "all 0.5s";
                             });
                             // 2초 후에 페이지 이동
                             setTimeout(function () {
                                 window.location.href = url;
                             }, 1000);
-                        }, 1000);
+                        }, 100);
                     });
                 });
             });
