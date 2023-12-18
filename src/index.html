@@ -107,7 +107,37 @@
         </div>
     </div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 모든 항목에 대해 "active" 클래스를 추가합니다.
+            var items = Array.from(document.querySelectorAll('.item'));
+            items.forEach(function (item) {
+                item.classList.add('active');
+            });
 
+            // Fisher-Yates 알고리즘을 사용하여 배열을 섞습니다.
+            for (let i = items.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [items[i], items[j]] = [items[j], items[i]];
+            }
+
+            // 각 항목에 대해 "active" 클래스를 제거하고 선 색상을 변경합니다.
+            items.forEach(function (item, index) {
+                setTimeout(function () {
+                    item.classList.remove('active');
+                    item.style.borderColor = 'black'; // 선 색상을 검은색으로 변경
+                    item.style.transition = "all 0.5s";
+
+                    // 모든 항목이 "active" 클래스 제거 후에 추가적인 작업 수행
+                    if (index === items.length - 1) {
+                        setTimeout(function () {
+                            // 추가 작업 수행
+                        }, 100);
+                    }
+                }, index * 100); // 각 항목은 5초 간격으로 제거됩니다.
+            });
+        });
+    </script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             document.querySelectorAll('.pageLink').forEach(function (link) {
