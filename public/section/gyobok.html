@@ -6,10 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gyobok</title>
 
-    <link rel="stylesheet" href="../assets/index-A8amKtA3.css">
+    <link rel="stylesheet" href="../assets/index-JJ10Db1S.css">
 
-    <script src="../script/script.js"></script>
-    <script src="../script/jquery.min.js"></script>
+
 </head>
 
 <style>
@@ -82,17 +81,17 @@
             <div class="sliderWrap">
                 <div class="slider">
                     <a href="#">
-                        <img src="../assets/img/gyobok01.png" alt="gyobok01">
+                        <img src="../assets/img/gyobok1.png" alt="gyobok01">
                     </a>
                 </div>
                 <div class="slider">
                     <a href="#">
-                        <img src="../assets/img/TP-Community.png" alt="gyobok02">
+                        <img src="../assets/img/gyobok2.png" alt="gyobok02">
                     </a>
                 </div>
                 <div class="slider">
                     <a href="#">
-                        <img src="../assets/img/TP-Introduceinner.png" alt="gyobok01">
+                        <img src="../assets/img/gyobok3.png" alt="gyobok03">
                     </a>
                 </div>
             </div>
@@ -156,9 +155,6 @@
     </script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // 현재 페이지의 URL을 가져옵니다.
-            var currentPage = window.location.href;
-
             // 모든 항목에 대해 "active" 클래스를 추가합니다.
             var items = Array.from(document.querySelectorAll('.item'));
             items.forEach(function (item) {
@@ -171,18 +167,20 @@
                 [items[i], items[j]] = [items[j], items[i]];
             }
 
-            // 각 항목에 대해 5초 간격으로 "active" 클래스를 제거합니다.
+            // 각 항목에 대해 "active" 클래스를 제거하고 선 색상을 변경합니다.
             items.forEach(function (item, index) {
                 setTimeout(function () {
                     item.classList.remove('active');
-                }, index * 200); // 각 항목은 5초 간격으로 제거됩니다.
+                    item.style.borderColor = 'black'; // 선 색상을 검은색으로 변경
+                    item.style.transition = "all 0.5s";
 
-                // item__slider일 경우 추가적인 처리를 수행합니다.
-                if (item.classList.contains('item__slider')) {
-                    setTimeout(function () {
-                        item.classList.add('active');
-                    }, index * 200); // 예를 들어, 500ms 후에 "active" 클래스를 추가합니다.
-                }
+                    // 모든 항목이 "active" 클래스 제거 후에 추가적인 작업 수행
+                    if (index === items.length - 1) {
+                        setTimeout(function () {
+                            // 추가 작업 수행
+                        }, 100);
+                    }
+                }, index * 100); // 각 항목은 5초 간격으로 제거됩니다.
             });
         });
     </script>
@@ -212,26 +210,26 @@
                                 setTimeout(function () {
                                     items.forEach(function (item) {
                                         item.style.borderColor = 'black'; // 선 색상을 검은색으로 변경
-                                        item.style.transition = "all 1s";
+                                        item.style.transition = "all 0.5s";
                                     });
-                                }, 1000); // 'active' 클래스 추가 후 추가적인 지연
+                                }); // 'active' 클래스 추가 후 추가적인 지연
                             }
 
-                        }, 200 * index); // 0.2초 간격
+                        }, 100 * index); // 0.2초 간격
                     });
 
-                    // 페이지 이동 전에 12초 후에도 'active' 클래스를 유지하기 위한 코드
+
                     setTimeout(function () {
                         items.forEach(function (item) {
                             item.classList.add('active');
                             item.style.borderColor = 'black'; // 선 색상을 검은색으로 변경
-                            item.style.transition = "all 1s";
+                            item.style.transition = "all 0.5s";
                         });
                         // 2초 후에 페이지 이동
                         setTimeout(function () {
                             window.location.href = url;
-                        }, 2000);
-                    }, 2000);
+                        }, 1000);
+                    }, 100);
                 });
             });
         });
