@@ -16,7 +16,7 @@
         <div class="item title">
             <ul>
                 <li class="active"><a class="pageLink" href="w.point.html">1</a></li>
-                <li><a href="../section/w.point.html">2</a></li>
+                <li><a href="../section/vite.html">2</a></li>
                 <!-- <li><a href="../section/w.point.html">3</a></li>
             </ul> -->
                 <h2>w.point</h2>
@@ -29,7 +29,7 @@
             </a>
         </div>
         <div class="item noR home">
-            <a class="pageLink" href="w.point.html">
+            <a class="pageLink" href="vite.html">
                 <p>SITE</p>
                 <img src="../assets/img/Arrow 12.svg" alt="화살표"></img>
             </a>
@@ -104,7 +104,7 @@
                             // 추가 작업 수행
                         }, 100);
                     }
-                }, index * 100); // 각 항목은 5초 간격으로 제거됩니다.
+                }, index * 100 + 1000); // 각 항목은 5초 간격으로 제거되며, 1초 동안 "active" 클래스 유지
             });
         });
     </script>

@@ -155,7 +155,7 @@
         }
     </script>
 
-   <script>
+    <script>
         document.addEventListener('DOMContentLoaded', function () {
             // 모든 항목에 대해 "active" 클래스를 추가합니다.
             var items = Array.from(document.querySelectorAll('.item'));
@@ -182,7 +182,7 @@
                             // 추가 작업 수행
                         }, 100);
                     }
-                }, index * 100); // 각 항목은 5초 간격으로 제거됩니다.
+                }, index * 100 + 1000); // 각 항목은 5초 간격으로 제거되며, 1초 동안 "active" 클래스 유지
             });
         });
     </script>
@@ -211,7 +211,7 @@
                             if (index === items.length - 1) {
                                 setTimeout(function () {
                                     items.forEach(function (item) {
-                                        item.style.borderColor = 'black'; // 선 색상을 검은색으로 변경
+                                        item.style.borderColor = 'blackwhite'; // 선 색상을 검은색으로 변경
                                         item.style.transition = "all 0.5s";
                                     });
                                 }); // 'active' 클래스 추가 후 추가적인 지연
